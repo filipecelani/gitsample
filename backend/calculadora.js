@@ -17,8 +17,10 @@ route.get('/',function(req,res){
         operacoes: operacoes
     });
 });
+
 const _hasValue = function(value){
-    return value !== undefined && value !== null;
+    //fixing bug that allows empty string
+    return value !== undefined && value !== null && value !== '';
 };
 
 route.get('/soma',function(req,res){
