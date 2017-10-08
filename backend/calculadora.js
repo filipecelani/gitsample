@@ -12,6 +12,11 @@ route.get('/',function(req,res){
             desc: 'subtração entre 2 dígitos',
             sample: 'a - b = c'
         },
+        {
+            title: 'mult',
+            desc: 'multiplicação entre 2 números',
+            sample: 'a * b = c'
+        },
     ];
     res.render('calculadora',{
         operacoes: operacoes
@@ -64,6 +69,29 @@ route.get('/sub', function (req, res) {
     b = parseInt(b);
     res.json({
         result: a - b
+    });
+});
+
+route.get('/mult', function (req, res) {
+    var a = req.query.a;
+    var b = req.query.b;
+    if (!_hasValue(a)) {
+        res.status(400).json({
+            error: 'a has no value'
+        });
+        return;
+    }
+    a = parseInt(a);
+
+    if (!_hasValue(b)) {
+        res.status(400).json({
+            error: 'b has no value'
+        });
+        return;
+    }
+    b = parseInt(b);
+    res.json({
+        result: a * b
     });
 });
 module.exports = route;
