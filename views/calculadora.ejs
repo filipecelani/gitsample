@@ -1,0 +1,13 @@
+<h1>Calculadora simples</h1>
+<p>Operações disponíveis</p>
+<P>Parametros "<strong>a</strong>" e "<strong>b</strong>"</P>
+<%
+  for(var i in operacoes){
+    var op = operacoes[i];
+%>
+    
+  <p><%= op.desc %></p>
+  <p><strong><%= op.sample %></strong></p>
+ <%
+  }
+ %>
