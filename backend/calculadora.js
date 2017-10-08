@@ -66,4 +66,33 @@ route.get('/sub', function (req, res) {
         result: a - b
     });
 });
+
+route.get('/div', function (req, res) {
+    var a = req.query.a;
+    var b = req.query.b;
+    if (!_hasValue(a)) {
+        res.status(400).json({
+            error: 'a has no value'
+        });
+        return;
+    }
+    a = parseInt(a);
+
+    if (!_hasValue(b)) {
+        res.status(400).json({
+            error: 'b has no value'
+        });
+        return;
+    }
+    b = parseInt(b);
+    if( b === 0 ){
+        res.status(400).json({
+            error: 'divisao por zero'
+        });
+        return;
+    }
+    res.json({
+        result: a / b
+    });
+});
 module.exports = route;
